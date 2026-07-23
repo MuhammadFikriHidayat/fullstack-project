@@ -6,7 +6,8 @@ import (
 
 	"fullstack-project/back-end/model"
 
-	"gorm.io/driver/mysql"
+	"github.com/glebarez/sqlite"
+	//"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -14,7 +15,7 @@ var DB *gorm.DB
 
 func ConnectDatabase() {
 
-	db, err := gorm.Open(mysql.Open("automation.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("automation.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect database :", err)
 	}
